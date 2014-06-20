@@ -52,6 +52,9 @@ class AsyncRequest(object):
         if callback:
             kwargs['hooks'] = {'response': callback}
 
+        if method == 'head':
+            kwargs.setdefault('allow_redirects', False)
+
         #: The rest arguments for ``Session.request``
         self.kwargs = kwargs
         #: Resulting ``Response``
